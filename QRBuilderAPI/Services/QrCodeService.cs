@@ -22,7 +22,6 @@ namespace QRBuilderAPI.Services
             var fgColor = SKColor.Parse(dto.Color);
             var bgColor = SKColor.Parse(dto.BackgroundColor);
 
-            // Create QR with SkiaSharp
             int size = 512;
             using var surface = SKSurface.Create(new SKImageInfo(size, size));
             var canvas = surface.Canvas;
@@ -30,19 +29,20 @@ namespace QRBuilderAPI.Services
 
             var moduleCount = data.ModuleMatrix.Count;
             float cellSize = (float)size / moduleCount;
-
+            
             for (int y = 0; y < moduleCount; y++)
             {
                 for (int x = 0; x < moduleCount; x++)
                 {
                     if (data.ModuleMatrix[y][x])
                     {
-                        var paint = new SKPaint { Color = fgColor, IsAntialias = false };
-                        canvas.DrawRect(new SKRect(x * cellSize, y * cellSize, (x + 1) * cellSize, (y + 1) * cellSize), paint);
+                        canvas.DrawRect(
+                            new SKRect(x * cellSize, y * cellSize, (x + 1) * cellSize, (y + 1) * cellSize),
+                            new SKPaint { Color = fgColor });
                     }
                 }
             }
-
+            
             using var image = surface.Snapshot();
             using var dataEncoded = image.Encode(SKEncodedImageFormat.Png, 100);
 

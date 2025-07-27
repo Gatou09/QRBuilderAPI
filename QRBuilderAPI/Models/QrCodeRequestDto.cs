@@ -6,5 +6,4 @@ public class QrCodeRequestDto
     public string Value { get; set; }
     public string Color { get; set; } = "#000000";
     public string BackgroundColor { get; set; } = "#ffffff";
-    public string? LogoUrl { get; set; }
 }
