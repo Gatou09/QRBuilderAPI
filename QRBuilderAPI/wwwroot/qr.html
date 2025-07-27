@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Builder</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>QR Code Builder</h1>
+
+    <section>
+        <h3>Connexion</h3>
+        <input id="email" type="text" placeholder="Email" value="test@qr.io" />
+        <input id="password" type="password" placeholder="Mot de passe" value="Test123!" />
+        <button onclick="login()">Se connecter</button>
+    </section>
+
+    <section id="generate-section" style="display:none;">
+        <h3>Générer un QR</h3>
+        <input id="value" type="text" placeholder="Texte ou URL" value="https://github.com/Gatou09/QRBuilderAPI" />
+        <button onclick="generate()">Générer QR</button>
+        <div id="result"></div>
+    </section>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
