@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QRBuilderAPI.Models;
 using QRBuilderAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace QRBuilderAPI.Controllers;
 
@@ -15,6 +16,7 @@ public class QrController : ControllerBase
         _qrService = qrService;
     }
 
+    [Authorize]
     [HttpPost("generate")]
     public IActionResult GenerateQr([FromBody] QrCodeRequestDto dto)
     {
